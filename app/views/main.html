@@ -1,8 +1,121 @@
-<ul class="meals">
-    <li class="meal" ng-repeat="meal in menu.meals">
-        <h4 class="name">{{meal.name}}</h4>
-        <img class="image" ng-src="{{meal.primaryImageUrl}}">
-        <p class="description">{{meal.description}}</p>
-        <p class="price">{{meal.price}}</p>
-    </li>
-</ul>
+		
+<div id="wrapper">
+    <div class="meals-container">
+        <ul class="meals">
+		    <li class="meal" ng-repeat="meal in menu.meals">
+		        <div class="meal-container" align="center">
+			        <p class="price" align="center">{{meal.price | currency:"£"}}</p>	        
+			        <img class="image" ng-src="{{meal.primaryImageUrl}}">
+					<div class="cropped">
+					    <div class="arc"></div>
+					</div>
+					<div class="cropped-cover">
+					    <div class="arc-cover"></div>
+					</div>		
+			        <div class="name-container">
+                        <h4 class="name">{{meal.name}}</h4>
+                    </div>
+				    <div class="circles">
+				        <table>
+				        	<tr><td>
+				        		<div class="circle1"></div>	
+				        	</td>
+				        	<td>
+				        		<div class="circle2"></div>	
+				        	</td>
+				        	<td>
+				        		<div class="circle3"></div>	
+				        	</td></tr>
+				        </table>
+				    </div>
+			        <p class="description" align="left" dd-text-collapse dd-text-collapse-max-length="60" dd-text-collapse-text="{{meal.description}}"></p>
+			        <div class="add-to-order" align="center" ng-click="cart.addItem(meal.name, meal.price, 1)">Add to your order</div>
+			    </div>
+		    </li>
+		</ul>
+    </div> <!--meals-container-->
+
+
+    <div class="aside">
+       <div class="cart-container">
+
+            <div class="order-small-container" ng-click="showFullCart = true" ng-hide="showFullCart">
+                <div class="time-to-order" ng-hide="cart.getTotalCount() > 0" align="center">It's time to order some delicious food</div>
+
+                <div class="order-small-container" ng-hide="cart.getTotalCount() == 0">
+                    <div class="order-small" align="center">
+                        <span class="mains-small" ng-if="cart.items.length == 1">
+                            <i>1 main</i>
+                        </span>
+                        <span class="mains-small" ng-if="cart.items.length > 1">
+                            <i>{{cart.items.length}} mains</i>             
+                        </span>               
+                    </div>
+                    <div class="confirm-price" align="center">
+                        {{cart.getTotalPrice() | currency:"£"}}
+                    </div>                        
+                </div> 
+            </div> 
+
+            <div ng-hide="!showFullCart">
+                          
+                <p class="your-order" ng-click="showFullCart = false"><b>Your Order</b></p>
+                <p class="delicious-restaurant" ng-click="showFullCart = false"><i>A Delicious Restaurant</i></p>
+                <p class="mains" ng-if="cart.items.length == 1">
+                    <i>1 main</i>
+                </p>
+                <p class="mains" ng-if="cart.items.length > 1">
+                    <i>{{cart.items.length}} mains</i>             
+                </p>
+                
+                <div class="mains-container">
+
+                    <!-- items -->
+                    <table class="table">
+
+                        <!-- empty cart message -->
+                        <tr ng-hide="cart.getTotalCount() > 0" >
+                            <td class="tdCenter" colspan="4">
+                                It's time to order some delicious food
+                            </td>
+                        </tr>
+
+                        <!-- cart items -->
+                        <tr ng-repeat="item in cart.items | orderBy:'name'">
+                            <td class="tdLeft">
+                              <div class="input-append">
+                                <a ng-disabled="item.quantity > 1000" ng-click="cart.addItem(item.name, item.price, 1)">+</a><br>
+                                {{item.quantity}}<br>                      
+                                <a ng-disabled="item.quantity <= 1" ng-click="cart.addItem(item.name, item.price, -1)" class="minus">-</a>
+                              </div>
+                            </td>                
+                            <td><div height-directive>{{item.name}}</div></td>
+                            <td class="tdRight" align="right">{{item.price * item.quantity | currency:"£"}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div class="confirm-line"></div>
+
+                <div class="confirm-container">
+                    <div class="confirm-order">
+                        <button 
+                            class="btn btn-danger confirm-btn" 
+                            ng-click="cart.clearItems()" 
+                            ng-disabled="cart.getTotalCount() < 1" >
+                            <i> Confirm Your Order </i>
+                        </button>
+                    </div>
+                    <div class="confirm-price" align="center">
+                        {{cart.getTotalPrice() | currency:"£"}}
+                    </div>
+                    <div class="confirm-clear"></div>
+                </div>
+            </div>
+        
+        </div> <!--cart-container-->
+    </div> <!--aside-->
+
+</div> <!--wrapper-->
+

@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var jstestApp = angular
   .module('jstestApp', [
     'ngAnimate',
     'ngCookies',
@@ -26,8 +26,8 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      })
-      .otherwise({
+      }).
+      otherwise({
         redirectTo: '/'
-      });
+      });;
   });

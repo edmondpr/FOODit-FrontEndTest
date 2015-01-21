@@ -11,10 +11,11 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="styles/main.css">    
     <!-- endbuild -->
   </head>
-  <body ng-app="jstestApp">
+  <body ng-app="jstestApp" ng-init="showFullCart = false">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -22,7 +23,7 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Menu</h3>
+        <h3 class="text-muted"><b>Your delicious restaurant</b></h3>
       </div>
 
       <div ng-view=""></div>
@@ -51,10 +52,13 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->      
         <script src="scripts/app.js"></script>
+        <script src="scripts/shoppingCart.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/directives/main.js"></script>      
         <script src="scripts/services/menuservice.js"></script>
+        <script src="scripts/services/dataservice.js"></script>        
         <!-- endbuild -->
 </body>
 </html>
