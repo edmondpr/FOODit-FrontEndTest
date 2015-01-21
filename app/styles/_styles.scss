@@ -63,19 +63,20 @@ ul {
 .price {
   position: relative;
   width: 70px;
-  height: 23px;
+  height: 27px;
   color: #fff;
+  padding-top: 2px;
   background-color: #456bf2;
   border: solid 1px #657acb;
   border-radius: 2px;
   font-style: italic;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .image {
   width: 280px;
   height: 210px;
-  margin-top: -23px;
+  margin-top: -27px;
 }
 
 .cropped {
@@ -161,7 +162,7 @@ ul {
   position: relative;
   margin-top: -5px;
   width: 250px;
-  min-height: 96px;
+  min-height: 100px;
   padding: 15px;
   font-size: 14px;
   color: #6a6255;

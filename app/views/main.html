@@ -4,7 +4,7 @@
         <ul class="meals">
 		    <li class="meal" ng-repeat="meal in menu.meals">
 		        <div class="meal-container" align="center">
-			        <p class="price" align="center">{{meal.price | currency:"£"}}</p>	        
+			        <p class="price" align="center"><b>{{meal.price | currency:"£"}}</b></p>
 			        <img class="image" ng-src="{{meal.primaryImageUrl}}">
 					<div class="cropped">
 					    <div class="arc"></div>
